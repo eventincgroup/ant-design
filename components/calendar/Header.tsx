@@ -54,7 +54,7 @@ export default class Header extends React.Component<HeaderProps, any> {
     const suffix = locale.year === '年' ? '年' : '';
     const options: React.ReactElement<any>[] = [];
     for (let index = start; index < end; index++) {
-      options.push(<option key={`${index}`}>{index + suffix}</option>);
+      options.push(<option key={index}>{index + suffix}</option>);
     }
     return (
       <select
@@ -85,7 +85,7 @@ export default class Header extends React.Component<HeaderProps, any> {
 
     for (let index = start; index < end; index++) {
       options.push(
-        <option key={`${index}`} value={index}>
+        <option key={index} value={index}>
           {months[index]}
         </option>,
       );
