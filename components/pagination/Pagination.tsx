@@ -2,9 +2,7 @@ import * as React from 'react';
 import RcPagination from 'rc-pagination';
 import enUS from 'rc-pagination/lib/locale/en_US';
 import classNames from 'classnames';
-import MiniSelect from './MiniSelect';
 import Icon from '../icon';
-import Select from '../select';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 
@@ -106,7 +104,6 @@ export default class Pagination extends React.Component<PaginationProps, {}> {
               selectPrefixCls={selectPrefixCls}
               {...this.getIconsProps(prefixCls)}
               className={classNames(className, { mini: isSmall })}
-              selectComponentClass={isSmall ? MiniSelect : Select}
               locale={locale}
             />
           );
