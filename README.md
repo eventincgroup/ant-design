@@ -35,3 +35,17 @@ And import each component's style like:
 ```less
 @import 'antd/lib/alert/style/index.less';
 ```
+
+## 🤝 Contributing
+
+After merging your dev branch into `master`:
+
+- run the following command to compile:
+  ```bash
+  yarn compile
+  ```
+- Set new version in `package.json`
+- Commit compiled files and `package.json`
+- Create tag for the new version
+- Push everthing
+- Don't forget to update your project's dependency to use the new version
