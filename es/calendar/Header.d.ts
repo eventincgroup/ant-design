@@ -27,14 +27,12 @@ export default class Header extends React.Component<HeaderProps, any> {
         yearSelectOffset: number;
         yearSelectTotal: number;
     };
-    private calenderHeaderNode;
     getYearSelectElement(prefixCls: string, year: number): JSX.Element;
     getMonthSelectElement(prefixCls: string, month: number, months: number[]): JSX.Element;
     onYearChange: (year: string) => void;
     onMonthChange: (month: string) => void;
     onInternalTypeChange: (e: RadioChangeEvent) => void;
     onTypeChange: (type: string) => void;
-    getCalenderHeaderNode: (node: HTMLDivElement) => void;
     getMonthYearSelections: (getPrefixCls: (suffixCls: string, customizePrefixCls?: string | undefined) => string) => {
         yearReactNode: JSX.Element;
         monthReactNode: JSX.Element | null;

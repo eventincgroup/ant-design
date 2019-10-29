@@ -35,9 +35,7 @@ import * as React from 'react';
 import RcPagination from 'rc-pagination';
 import enUS from "rc-pagination/es/locale/en_US";
 import classNames from 'classnames';
-import MiniSelect from './MiniSelect';
 import Icon from '../icon';
-import Select from '../select';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import { ConfigConsumer } from '../config-provider';
 
@@ -115,7 +113,6 @@ function (_React$Component) {
           className: classNames(className, {
             mini: isSmall
           }),
-          selectComponentClass: isSmall ? MiniSelect : Select,
           locale: locale
         }));
       });

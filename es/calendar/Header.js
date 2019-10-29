@@ -25,10 +25,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 import * as React from 'react';
-import Select from '../select';
 import { Group, Button } from '../radio';
 import { ConfigConsumer } from '../config-provider';
-var Option = Select.Option;
 
 function getMonthsLocale(value) {
   var current = value.clone();
@@ -109,10 +107,6 @@ function (_React$Component) {
       }
     };
 
-    _this.getCalenderHeaderNode = function (node) {
-      _this.calenderHeaderNode = node;
-    };
-
     _this.getMonthYearSelections = function (getPrefixCls) {
       var _this$props2 = _this.props,
           customizePrefixCls = _this$props2.prefixCls,
@@ -173,8 +167,7 @@ function (_React$Component) {
           monthReactNode = _this$getMonthYearSel.monthReactNode;
 
       return headerRender ? _this.headerRenderCustom(headerRender) : React.createElement("div", {
-        className: "".concat(prefixCls, "-header"),
-        ref: _this.getCalenderHeaderNode
+        className: "".concat(prefixCls, "-header")
       }, yearReactNode, monthReactNode, typeSwitch);
     };
 
@@ -191,7 +184,6 @@ function (_React$Component) {
           yearSelectTotal = _this$props6.yearSelectTotal,
           _this$props6$locale = _this$props6.locale,
           locale = _this$props6$locale === void 0 ? {} : _this$props6$locale,
-          fullscreen = _this$props6.fullscreen,
           validRange = _this$props6.validRange;
       var start = year - yearSelectOffset;
       var end = start + yearSelectTotal;
@@ -205,20 +197,17 @@ function (_React$Component) {
       var options = [];
 
       for (var index = start; index < end; index++) {
-        options.push(React.createElement(Option, {
-          key: "".concat(index)
+        options.push(React.createElement("option", {
+          key: index
         }, index + suffix));
       }
 
-      return React.createElement(Select, {
-        size: fullscreen ? 'default' : 'small',
-        dropdownMatchSelectWidth: false,
+      return React.createElement("select", {
         className: "".concat(prefixCls, "-year-select"),
-        onChange: this.onYearChange,
-        value: String(year),
-        getPopupContainer: function getPopupContainer() {
-          return _this2.calenderHeaderNode;
-        }
+        onChange: function onChange(event) {
+          return _this2.onYearChange(event.target.value);
+        },
+        value: String(year)
       }, options);
     }
   }, {
@@ -227,7 +216,6 @@ function (_React$Component) {
       var _this3 = this;
 
       var _this$props7 = this.props,
-          fullscreen = _this$props7.fullscreen,
           validRange = _this$props7.validRange,
           value = _this$props7.value;
       var options = [];
@@ -251,19 +239,17 @@ function (_React$Component) {
       }
 
       for (var index = start; index < end; index++) {
-        options.push(React.createElement(Option, {
-          key: "".concat(index)
+        options.push(React.createElement("option", {
+          key: index,
+          value: index
         }, months[index]));
       }
 
-      return React.createElement(Select, {
-        size: fullscreen ? 'default' : 'small',
-        dropdownMatchSelectWidth: false,
+      return React.createElement("select", {
         className: "".concat(prefixCls, "-month-select"),
         value: String(month),
-        onChange: this.onMonthChange,
-        getPopupContainer: function getPopupContainer() {
-          return _this3.calenderHeaderNode;
+        onChange: function onChange(event) {
+          return _this3.onMonthChange(event.target.value);
         }
       }, options);
     }
