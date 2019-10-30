@@ -41,7 +41,7 @@ export default class Tabs extends React.Component<TabsProps, any> {
     static TabPane: React.ClassicComponentClass<TabPaneProps>;
     static defaultProps: {
         hideAdd: boolean;
-        tabPosition: TabsPosition;
+        tabPosition: import("../carousel").DotPosition;
     };
     componentDidMount(): void;
     removeTab: (targetKey: string, e: React.MouseEvent<HTMLElement, MouseEvent>) => void;

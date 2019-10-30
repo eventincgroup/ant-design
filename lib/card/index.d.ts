@@ -32,7 +32,6 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
     actions?: React.ReactNode[];
     tabList?: CardTabListType[];
     tabBarExtraContent?: React.ReactNode | null;
-    onTabChange?: (key: string) => void;
     activeTabKey?: string;
     defaultActiveTabKey?: string;
 }
@@ -41,7 +40,6 @@ export default class Card extends React.Component<CardProps, {}> {
     static Meta: typeof Meta;
     componentDidMount(): void;
     getCompatibleHoverable(): boolean | undefined;
-    onTabChange: (key: string) => void;
     isContainGrid(): undefined;
     renderCard: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element;
     render(): JSX.Element;

@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import omit from 'omit.js';
 import Grid from './Grid';
 import Meta from './Meta';
-import Tabs from '../tabs';
 import Row from '../row';
 import Col from '../col';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
@@ -52,7 +51,6 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
   actions?: React.ReactNode[];
   tabList?: CardTabListType[];
   tabBarExtraContent?: React.ReactNode | null;
-  onTabChange?: (key: string) => void;
   activeTabKey?: string;
   defaultActiveTabKey?: string;
 }
@@ -86,12 +84,6 @@ export default class Card extends React.Component<CardProps, {}> {
     return !!hoverable;
   }
 
-  onTabChange = (key: string) => {
-    if (this.props.onTabChange) {
-      this.props.onTabChange(key);
-    }
-  };
-
   isContainGrid() {
     let containGrid;
     React.Children.forEach(this.props.children, (element: JSX.Element) => {
@@ -116,11 +108,7 @@ export default class Card extends React.Component<CardProps, {}> {
       type,
       cover,
       actions,
-      tabList,
       children,
-      activeTabKey,
-      defaultActiveTabKey,
-      tabBarExtraContent,
       ...others
     } = this.props;
 
@@ -130,7 +118,6 @@ export default class Card extends React.Component<CardProps, {}> {
       [`${prefixCls}-bordered`]: bordered,
       [`${prefixCls}-hoverable`]: this.getCompatibleHoverable(),
       [`${prefixCls}-contain-grid`]: this.isContainGrid(),
-      [`${prefixCls}-contain-tabs`]: tabList && tabList.length,
       [`${prefixCls}-${size}`]: size !== 'default',
       [`${prefixCls}-type-${type}`]: !!type,
     });
@@ -183,36 +170,15 @@ export default class Card extends React.Component<CardProps, {}> {
       </div>
     );
 
-    const hasActiveTabKey = activeTabKey !== undefined;
-    const extraProps = {
-      [hasActiveTabKey ? 'activeKey' : 'defaultActiveKey']: hasActiveTabKey
-        ? activeTabKey
-        : defaultActiveTabKey,
-      tabBarExtraContent,
-    };
-
     let head;
-    const tabs =
-      tabList && tabList.length ? (
-        <Tabs
-          {...extraProps}
-          className={`${prefixCls}-head-tabs`}
-          size="large"
-          onChange={this.onTabChange}
-        >
-          {tabList.map(item => (
-            <Tabs.TabPane tab={item.tab} disabled={item.disabled} key={item.key} />
-          ))}
-        </Tabs>
-      ) : null;
-    if (title || extra || tabs) {
+
+    if (title || extra) {
       head = (
         <div className={`${prefixCls}-head`} style={headStyle}>
           <div className={`${prefixCls}-head-wrapper`}>
             {title && <div className={`${prefixCls}-head-title`}>{title}</div>}
             {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
           </div>
-          {tabs}
         </div>
       );
     }
@@ -226,7 +192,7 @@ export default class Card extends React.Component<CardProps, {}> {
       actions && actions.length ? (
         <ul className={`${prefixCls}-actions`}>{getAction(actions)}</ul>
       ) : null;
-    const divProps = omit(others, ['onTabChange', 'noHovering', 'hoverable']);
+    const divProps = omit(others, ['noHovering', 'hoverable']);
     return (
       <div {...divProps} className={classString}>
         {head}

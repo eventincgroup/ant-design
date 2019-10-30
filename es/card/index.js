@@ -38,7 +38,6 @@ import classNames from 'classnames';
 import omit from 'omit.js';
 import Grid from './Grid';
 import Meta from './Meta';
-import Tabs from '../tabs';
 import Row from '../row';
 import Col from '../col';
 import { ConfigConsumer } from '../config-provider';
@@ -70,14 +69,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Card).apply(this, arguments));
 
-    _this.onTabChange = function (key) {
-      if (_this.props.onTabChange) {
-        _this.props.onTabChange(key);
-      }
-    };
-
     _this.renderCard = function (_ref) {
-      var _classNames, _extraProps;
+      var _classNames;
 
       var getPrefixCls = _ref.getPrefixCls;
 
@@ -98,15 +91,11 @@ function (_React$Component) {
           type = _a.type,
           cover = _a.cover,
           actions = _a.actions,
-          tabList = _a.tabList,
           children = _a.children,
-          activeTabKey = _a.activeTabKey,
-          defaultActiveTabKey = _a.defaultActiveTabKey,
-          tabBarExtraContent = _a.tabBarExtraContent,
-          others = __rest(_a, ["prefixCls", "className", "extra", "headStyle", "bodyStyle", "title", "loading", "bordered", "size", "type", "cover", "actions", "tabList", "children", "activeTabKey", "defaultActiveTabKey", "tabBarExtraContent"]);
+          others = __rest(_a, ["prefixCls", "className", "extra", "headStyle", "bodyStyle", "title", "loading", "bordered", "size", "type", "cover", "actions", "children"]);
 
       var prefixCls = getPrefixCls('card', customizePrefixCls);
-      var classString = classNames(prefixCls, className, (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-loading"), loading), _defineProperty(_classNames, "".concat(prefixCls, "-bordered"), bordered), _defineProperty(_classNames, "".concat(prefixCls, "-hoverable"), _this.getCompatibleHoverable()), _defineProperty(_classNames, "".concat(prefixCls, "-contain-grid"), _this.isContainGrid()), _defineProperty(_classNames, "".concat(prefixCls, "-contain-tabs"), tabList && tabList.length), _defineProperty(_classNames, "".concat(prefixCls, "-").concat(size), size !== 'default'), _defineProperty(_classNames, "".concat(prefixCls, "-type-").concat(type), !!type), _classNames));
+      var classString = classNames(prefixCls, className, (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-loading"), loading), _defineProperty(_classNames, "".concat(prefixCls, "-bordered"), bordered), _defineProperty(_classNames, "".concat(prefixCls, "-hoverable"), _this.getCompatibleHoverable()), _defineProperty(_classNames, "".concat(prefixCls, "-contain-grid"), _this.isContainGrid()), _defineProperty(_classNames, "".concat(prefixCls, "-").concat(size), size !== 'default'), _defineProperty(_classNames, "".concat(prefixCls, "-type-").concat(type), !!type), _classNames));
       var loadingBlockStyle = bodyStyle.padding === 0 || bodyStyle.padding === '0px' ? {
         padding: 24
       } : undefined;
@@ -164,22 +153,9 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
       }))));
-      var hasActiveTabKey = activeTabKey !== undefined;
-      var extraProps = (_extraProps = {}, _defineProperty(_extraProps, hasActiveTabKey ? 'activeKey' : 'defaultActiveKey', hasActiveTabKey ? activeTabKey : defaultActiveTabKey), _defineProperty(_extraProps, "tabBarExtraContent", tabBarExtraContent), _extraProps);
       var head;
-      var tabs = tabList && tabList.length ? React.createElement(Tabs, _extends({}, extraProps, {
-        className: "".concat(prefixCls, "-head-tabs"),
-        size: "large",
-        onChange: _this.onTabChange
-      }), tabList.map(function (item) {
-        return React.createElement(Tabs.TabPane, {
-          tab: item.tab,
-          disabled: item.disabled,
-          key: item.key
-        });
-      })) : null;
 
-      if (title || extra || tabs) {
+      if (title || extra) {
         head = React.createElement("div", {
           className: "".concat(prefixCls, "-head"),
           style: headStyle
@@ -189,7 +165,7 @@ function (_React$Component) {
           className: "".concat(prefixCls, "-head-title")
         }, title), extra && React.createElement("div", {
           className: "".concat(prefixCls, "-extra")
-        }, extra)), tabs);
+        }, extra)));
       }
 
       var coverDom = cover ? React.createElement("div", {
@@ -202,7 +178,7 @@ function (_React$Component) {
       var actionDom = actions && actions.length ? React.createElement("ul", {
         className: "".concat(prefixCls, "-actions")
       }, getAction(actions)) : null;
-      var divProps = omit(others, ['onTabChange', 'noHovering', 'hoverable']);
+      var divProps = omit(others, ['noHovering', 'hoverable']);
       return React.createElement("div", _extends({}, divProps, {
         className: classString
       }), head, coverDom, body, actionDom);

@@ -120,13 +120,6 @@
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-.ant-card-contain-tabs > .ant-card-head .ant-card-head-title {
-  min-height: 32px;
-  padding-bottom: 0;
-}
-.ant-card-contain-tabs > .ant-card-head .ant-card-extra {
-  padding-bottom: 0;
-}
 .ant-card-cover > * {
   display: block;
   width: 100%;
