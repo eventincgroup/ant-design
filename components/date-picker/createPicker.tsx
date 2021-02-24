@@ -180,16 +180,6 @@ export default function createPicker(TheCalendar: React.ComponentClass): any {
         [`${prefixCls}-month`]: MonthCalendar === TheCalendar,
       });
 
-      if (value && localeCode) {
-        if (multiple && 'length' in value) {
-          if (value.length) {
-            value.forEach((singleValue: moment.Moment) => singleValue.locale(singleValue));
-          }
-        } else if ('locale' in value) {
-          value.locale(localeCode);
-        }
-      }
-
       let pickerProps: Object = {};
       let calendarProps: any = {};
       const pickerStyle: { minWidth?: number } = {};
