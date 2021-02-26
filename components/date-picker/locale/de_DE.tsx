@@ -5,6 +5,7 @@ import TimePickerLocale from '../../time-picker/locale/de_DE';
 const locale = {
   lang: {
     placeholder: 'Datum auswählen',
+    locale: 'de_DE',
     rangePlaceholder: ['Startdatum', 'Enddatum'],
     ...CalendarLocale,
   },
