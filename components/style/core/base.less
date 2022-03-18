@@ -223,6 +223,7 @@ sup {
 //
 
 a {
+  text-decoration: @link-decoration;
   background-color: transparent; // remove the gray background on active links in IE 10.
   outline: none;
   cursor: pointer;
@@ -231,6 +232,7 @@ a {
 
   &:active,
   &:hover {
+    text-decoration: @link-hover-decoration;
     outline: 0;
   }
 
