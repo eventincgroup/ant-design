@@ -67,7 +67,8 @@ class Affix extends React.Component<AffixProps, AffixState> {
 
   fixedNode: HTMLDivElement;
 
-  private timeout: number;
+  // @ts-ignore
+  private timeout;
 
   // Event handler
   componentDidMount() {

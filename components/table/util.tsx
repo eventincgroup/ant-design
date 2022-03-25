@@ -58,6 +58,7 @@ export function normalizeColumns(elements: React.ReactChildren) {
       return;
     }
     const column: any = {
+      // @ts-ignore
       ...element.props,
     };
     if (element.key) {
