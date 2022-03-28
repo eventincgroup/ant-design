@@ -16,7 +16,8 @@ export interface ActionButtonState {
 }
 
 export default class ActionButton extends React.Component<ActionButtonProps, ActionButtonState> {
-  timeoutId: number;
+  // @ts-ignore
+  timeoutId;
 
   constructor(props: ActionButtonProps) {
     super(props);
