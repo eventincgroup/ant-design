@@ -33,5 +33,5 @@ export interface DrawerProps {
 export interface IDrawerState {
     push?: boolean;
 }
-declare const _default: React.FunctionComponent<DrawerProps>;
+declare const _default: React.SFC<DrawerProps>;
 export default _default;

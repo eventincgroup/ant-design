@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 import * as React from 'react';
 import * as moment from 'moment';
@@ -34,17 +38,17 @@ import interopDefault from '../_util/interopDefault';
 import getDataOrAriaProps from '../_util/getDataOrAriaProps';
 import { formatDate } from './utils';
 export default function createPicker(TheCalendar) {
-  var CalenderWrapper =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var CalenderWrapper = /*#__PURE__*/function (_React$Component) {
     _inherits(CalenderWrapper, _React$Component);
+
+    var _super = _createSuper(CalenderWrapper);
 
     function CalenderWrapper(props) {
       var _this;
 
       _classCallCheck(this, CalenderWrapper);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(CalenderWrapper).call(this, props));
+      _this = _super.call(this, props);
 
       _this.saveInput = function (node) {
         _this.input = node;
@@ -115,7 +119,7 @@ export default function createPicker(TheCalendar) {
         var _assertThisInitialize2 = _assertThisInitialized(_this),
             prefixCls = _assertThisInitialize2.prefixCls;
 
-        return renderExtraFooter ? React.createElement("div", {
+        return renderExtraFooter ? /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-footer-extra")
         }, renderExtraFooter.apply(void 0, arguments)) : null;
       };
@@ -178,7 +182,7 @@ export default function createPicker(TheCalendar) {
         }
 
         warning(!('onOK' in props), 'DatePicker', 'It should be `DatePicker[onOk]` or `MonthPicker[onOk]`, instead of `onOK`!');
-        var calendar = React.createElement(TheCalendar, _extends({}, calendarProps, {
+        var calendar = /*#__PURE__*/React.createElement(TheCalendar, _extends({}, calendarProps, {
           disabledDate: props.disabledDate,
           disabledTime: disabledTime,
           locale: locale.lang,
@@ -200,19 +204,19 @@ export default function createPicker(TheCalendar) {
           selectMonths: selectMonths,
           value: showDate
         }));
-        var clearIcon = !props.disabled && props.allowClear && value ? props.clearIcon ? React.createElement("span", {
+        var clearIcon = !props.disabled && props.allowClear && value ? props.clearIcon ? /*#__PURE__*/React.createElement("span", {
           onClick: _this.clearSelection
-        }, props.clearIcon) : React.createElement(Icon, {
+        }, props.clearIcon) : /*#__PURE__*/React.createElement(Icon, {
           type: "close-circle",
           className: "".concat(prefixCls, "-picker-clear"),
           onClick: _this.clearSelection,
           theme: "filled"
         }) : null;
-        var inputIcon = suffixIcon && (React.isValidElement(suffixIcon) ? React.cloneElement(suffixIcon, {
+        var inputIcon = suffixIcon && ( /*#__PURE__*/React.isValidElement(suffixIcon) ? /*#__PURE__*/React.cloneElement(suffixIcon, {
           className: classNames((_classNames2 = {}, _defineProperty(_classNames2, suffixIcon.props.className, suffixIcon.props.className), _defineProperty(_classNames2, "".concat(prefixCls, "-picker-icon"), true), _classNames2))
-        }) : React.createElement("span", {
+        }) : /*#__PURE__*/React.createElement("span", {
           className: "".concat(prefixCls, "-picker-icon")
-        }, suffixIcon)) || props.pickerIcon || React.createElement(Icon, {
+        }, suffixIcon)) || props.pickerIcon || /*#__PURE__*/React.createElement(Icon, {
           type: "calendar",
           className: "".concat(prefixCls, "-picker-icon")
         });
@@ -235,7 +239,7 @@ export default function createPicker(TheCalendar) {
         var dataOrAriaProps = getDataOrAriaProps(props);
 
         var input = function input() {
-          return React.createElement("div", null, React.createElement("input", _extends({
+          return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", _extends({
             ref: _this.saveInput,
             disabled: props.disabled,
             readOnly: true,
@@ -247,7 +251,7 @@ export default function createPicker(TheCalendar) {
           }, dataOrAriaProps)), clearIcon, inputIcon);
         };
 
-        return React.createElement("span", {
+        return /*#__PURE__*/React.createElement("span", {
           id: props.id,
           className: classNames(props.className, props.pickerClass),
           style: _extends(_extends({}, pickerStyle), props.style),
@@ -255,7 +259,7 @@ export default function createPicker(TheCalendar) {
           onBlur: props.onBlur,
           onMouseEnter: props.onMouseEnter,
           onMouseLeave: props.onMouseLeave
-        }, React.createElement(RcDatePicker, _extends({}, props, pickerProps, {
+        }, /*#__PURE__*/React.createElement(RcDatePicker, _extends({}, props, pickerProps, {
           calendar: calendar,
           value: value,
           prefixCls: "".concat(prefixCls, "-picker-container"),
@@ -307,7 +311,7 @@ export default function createPicker(TheCalendar) {
     }, {
       key: "render",
       value: function render() {
-        return React.createElement(ConfigConsumer, null, this.renderPicker);
+        return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderPicker);
       }
     }], [{
       key: "getDerivedStateFromProps",

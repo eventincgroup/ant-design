@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import { ConfigConsumer } from '../config-provider';
 
 var ButtonGroup = function ButtonGroup(props) {
-  return React.createElement(ConfigConsumer, null, function (_ref) {
+  return /*#__PURE__*/React.createElement(ConfigConsumer, null, function (_ref) {
     var getPrefixCls = _ref.getPrefixCls;
 
     var customizePrefixCls = props.prefixCls,
@@ -47,7 +47,7 @@ var ButtonGroup = function ButtonGroup(props) {
     }
 
     var classes = classNames(prefixCls, _defineProperty({}, "".concat(prefixCls, "-").concat(sizeCls), sizeCls), className);
-    return React.createElement("div", _extends({}, others, {
+    return /*#__PURE__*/React.createElement("div", _extends({}, others, {
       className: classes
     }));
   });

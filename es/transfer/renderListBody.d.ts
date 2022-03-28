@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Omit } from '../_util/type';
 import { TransferItem } from '.';
 import { TransferListProps, RenderedItem } from './list';

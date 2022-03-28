@@ -1,6 +1,6 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 import * as React from 'react';
 import Notification from 'rc-notification';
@@ -59,7 +59,7 @@ function notice(args) {
     };
 
     getMessageInstance(function (instance) {
-      var iconNode = React.createElement(Icon, {
+      var iconNode = /*#__PURE__*/React.createElement(Icon, {
         type: iconType,
         theme: iconType === 'loading' ? 'outlined' : 'filled'
       });
@@ -68,9 +68,9 @@ function notice(args) {
         key: args.key || target,
         duration: duration,
         style: {},
-        content: React.createElement("div", {
+        content: /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-custom-content").concat(args.type ? " ".concat(prefixCls, "-").concat(args.type) : '')
-        }, args.icon ? args.icon : switchIconNode, React.createElement("span", null, args.content)),
+        }, args.icon ? args.icon : switchIconNode, /*#__PURE__*/React.createElement("span", null, args.content)),
         onClose: callback
       });
     });

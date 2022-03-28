@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 import * as React from 'react';
 import RcTree, { TreeNode } from 'rc-tree';
@@ -28,17 +32,17 @@ import Icon from '../icon';
 import { ConfigConsumer } from '../config-provider';
 import collapseMotion from '../_util/motion';
 
-var Tree =
-/*#__PURE__*/
-function (_React$Component) {
+var Tree = /*#__PURE__*/function (_React$Component) {
   _inherits(Tree, _React$Component);
+
+  var _super = _createSuper(Tree);
 
   function Tree() {
     var _this;
 
     _classCallCheck(this, Tree);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tree).apply(this, arguments));
+    _this = _super.apply(this, arguments);
 
     _this.renderSwitcherIcon = function (prefixCls, switcherIcon, _ref) {
       var isLeaf = _ref.isLeaf,
@@ -47,7 +51,7 @@ function (_React$Component) {
       var showLine = _this.props.showLine;
 
       if (loading) {
-        return React.createElement(Icon, {
+        return /*#__PURE__*/React.createElement(Icon, {
           type: "loading",
           className: "".concat(prefixCls, "-switcher-loading-icon")
         });
@@ -55,7 +59,7 @@ function (_React$Component) {
 
       if (isLeaf) {
         if (showLine) {
-          return React.createElement(Icon, {
+          return /*#__PURE__*/React.createElement(Icon, {
             type: "file",
             className: "".concat(prefixCls, "-switcher-line-icon")
           });
@@ -68,20 +72,20 @@ function (_React$Component) {
 
       if (switcherIcon) {
         var switcherOriginCls = switcherIcon.props.className || '';
-        return React.cloneElement(switcherIcon, {
+        return /*#__PURE__*/React.cloneElement(switcherIcon, {
           className: classNames(switcherOriginCls, switcherCls)
         });
       }
 
       if (showLine) {
-        return React.createElement(Icon, {
+        return /*#__PURE__*/React.createElement(Icon, {
           type: expanded ? 'minus-square' : 'plus-square',
           className: "".concat(prefixCls, "-switcher-line-icon"),
           theme: "outlined"
         });
       }
 
-      return React.createElement(Icon, {
+      return /*#__PURE__*/React.createElement(Icon, {
         type: "caret-down",
         className: switcherCls,
         theme: "filled"
@@ -108,12 +112,12 @@ function (_React$Component) {
           children = props.children;
       var checkable = props.checkable;
       var prefixCls = getPrefixCls('tree', customizePrefixCls);
-      return React.createElement(RcTree, _extends({
+      return /*#__PURE__*/React.createElement(RcTree, _extends({
         ref: _this.setTreeRef
       }, props, {
         prefixCls: prefixCls,
         className: classNames(className, (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-icon-hide"), !showIcon), _defineProperty(_classNames, "".concat(prefixCls, "-block-node"), blockNode), _classNames)),
-        checkable: checkable ? React.createElement("span", {
+        checkable: checkable ? /*#__PURE__*/React.createElement("span", {
           className: "".concat(prefixCls, "-checkbox-inner")
         }) : checkable,
         switcherIcon: function switcherIcon(nodeProps) {
@@ -128,7 +132,7 @@ function (_React$Component) {
   _createClass(Tree, [{
     key: "render",
     value: function render() {
-      return React.createElement(ConfigConsumer, null, this.renderTree);
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderTree);
     }
   }]);
 

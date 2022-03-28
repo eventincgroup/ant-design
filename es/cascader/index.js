@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var __rest = this && this.__rest || function (s, e) {
   var t = {};
@@ -50,7 +54,7 @@ var defaultLimit = 50;
 
 function highlightKeyword(str, keyword, prefixCls) {
   return str.split(keyword).map(function (node, index) {
-    return index === 0 ? node : [React.createElement("span", {
+    return index === 0 ? node : [/*#__PURE__*/React.createElement("span", {
       className: "".concat(prefixCls, "-menu-item-keyword"),
       key: "seperator"
     }, keyword), node];
@@ -132,17 +136,17 @@ function warningValueNotExist(list) {
   });
 }
 
-var Cascader =
-/*#__PURE__*/
-function (_React$Component) {
+var Cascader = /*#__PURE__*/function (_React$Component) {
   _inherits(Cascader, _React$Component);
+
+  var _super = _createSuper(Cascader);
 
   function Cascader(props) {
     var _this;
 
     _classCallCheck(this, Cascader);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cascader).call(this, props));
+    _this = _super.call(this, props);
     _this.cachedOptions = [];
 
     _this.setValue = function (value) {
@@ -282,7 +286,7 @@ function (_React$Component) {
       var prefixCls = getPrefixCls('cascader', customizePrefixCls);
       var inputPrefixCls = getPrefixCls('input', customizeInputPrefixCls);
       var sizeCls = classNames((_classNames = {}, _defineProperty(_classNames, "".concat(inputPrefixCls, "-lg"), size === 'large'), _defineProperty(_classNames, "".concat(inputPrefixCls, "-sm"), size === 'small'), _classNames));
-      var clearIcon = allowClear && !disabled && value.length > 0 || state.inputValue ? React.createElement(Icon, {
+      var clearIcon = allowClear && !disabled && value.length > 0 || state.inputValue ? /*#__PURE__*/React.createElement(Icon, {
         type: "close-circle",
         theme: "filled",
         className: "".concat(prefixCls, "-picker-clear"),
@@ -327,20 +331,20 @@ function (_React$Component) {
         dropdownMenuColumnStyle.width = _this.input.input.offsetWidth;
       }
 
-      var inputIcon = suffixIcon && (React.isValidElement(suffixIcon) ? React.cloneElement(suffixIcon, {
+      var inputIcon = suffixIcon && ( /*#__PURE__*/React.isValidElement(suffixIcon) ? /*#__PURE__*/React.cloneElement(suffixIcon, {
         className: classNames((_classNames4 = {}, _defineProperty(_classNames4, suffixIcon.props.className, suffixIcon.props.className), _defineProperty(_classNames4, "".concat(prefixCls, "-picker-arrow"), true), _classNames4))
-      }) : React.createElement("span", {
+      }) : /*#__PURE__*/React.createElement("span", {
         className: "".concat(prefixCls, "-picker-arrow")
-      }, suffixIcon)) || React.createElement(Icon, {
+      }, suffixIcon)) || /*#__PURE__*/React.createElement(Icon, {
         type: "down",
         className: arrowCls
       });
-      var input = children || React.createElement("span", {
+      var input = children || /*#__PURE__*/React.createElement("span", {
         style: style,
         className: pickerCls
-      }, React.createElement("span", {
+      }, /*#__PURE__*/React.createElement("span", {
         className: "".concat(prefixCls, "-picker-label")
-      }, _this.getLabel()), React.createElement(Input, _extends({}, inputProps, {
+      }, _this.getLabel()), /*#__PURE__*/React.createElement(Input, _extends({}, inputProps, {
         tabIndex: "-1",
         ref: _this.saveInput,
         prefixCls: inputPrefixCls,
@@ -355,18 +359,18 @@ function (_React$Component) {
         onKeyDown: _this.handleKeyDown,
         onChange: showSearch ? _this.handleInputChange : undefined
       })), clearIcon, inputIcon);
-      var expandIcon = React.createElement(Icon, {
+      var expandIcon = /*#__PURE__*/React.createElement(Icon, {
         type: "right"
       });
-      var loadingIcon = React.createElement("span", {
+      var loadingIcon = /*#__PURE__*/React.createElement("span", {
         className: "".concat(prefixCls, "-menu-item-loading-icon")
-      }, React.createElement(Icon, {
+      }, /*#__PURE__*/React.createElement(Icon, {
         type: "redo",
         spin: true
       }));
       var getPopupContainer = props.getPopupContainer || getContextPopupContainer;
       var rest = omit(props, ['inputIcon', 'expandIcon', 'loadingIcon']);
-      return React.createElement(RcCascader, _extends({}, rest, {
+      return /*#__PURE__*/React.createElement(RcCascader, _extends({}, rest, {
         prefixCls: prefixCls,
         getPopupContainer: getPopupContainer,
         options: options,
@@ -493,8 +497,8 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      return React.createElement(ConfigConsumer, null, function (configArgument) {
-        return React.createElement(LocaleReceiver, null, function (locale) {
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, function (configArgument) {
+        return /*#__PURE__*/React.createElement(LocaleReceiver, null, function (locale) {
           return _this3.renderCascader(configArgument, locale);
         });
       });

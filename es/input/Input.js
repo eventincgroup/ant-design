@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -44,17 +48,17 @@ function hasPrefixSuffix(props) {
 
 var InputSizes = tuple('small', 'default', 'large');
 
-var Input =
-/*#__PURE__*/
-function (_React$Component) {
+var Input = /*#__PURE__*/function (_React$Component) {
   _inherits(Input, _React$Component);
+
+  var _super = _createSuper(Input);
 
   function Input(props) {
     var _this;
 
     _classCallCheck(this, Input);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
+    _this = _super.call(this, props);
 
     _this.saveInput = function (node) {
       _this.input = node;
@@ -100,9 +104,9 @@ function (_React$Component) {
 
   _createClass(Input, [{
     key: "componentDidUpdate",
-    // Since polyfill `getSnapshotBeforeUpdate` need work with `componentDidUpdate`.
+    value: // Since polyfill `getSnapshotBeforeUpdate` need work with `componentDidUpdate`.
     // We keep an empty function here.
-    value: function componentDidUpdate() {}
+    function componentDidUpdate() {}
   }, {
     key: "getSnapshotBeforeUpdate",
     value: function getSnapshotBeforeUpdate(prevProps) {
@@ -180,7 +184,7 @@ function (_React$Component) {
         return null;
       }
 
-      return React.createElement(Icon, {
+      return /*#__PURE__*/React.createElement(Icon, {
         type: "close-circle",
         theme: "filled",
         onClick: this.handleReset,
@@ -196,7 +200,7 @@ function (_React$Component) {
           allowClear = _this$props4.allowClear;
 
       if (suffix || allowClear) {
-        return React.createElement("span", {
+        return /*#__PURE__*/React.createElement("span", {
           className: "".concat(prefixCls, "-suffix")
         }, this.renderClearIcon(prefixCls), suffix);
       }
@@ -221,22 +225,22 @@ function (_React$Component) {
 
       var wrapperClassName = "".concat(prefixCls, "-group");
       var addonClassName = "".concat(wrapperClassName, "-addon");
-      var addonBeforeNode = addonBefore ? React.createElement("span", {
+      var addonBeforeNode = addonBefore ? /*#__PURE__*/React.createElement("span", {
         className: addonClassName
       }, addonBefore) : null;
-      var addonAfterNode = addonAfter ? React.createElement("span", {
+      var addonAfterNode = addonAfter ? /*#__PURE__*/React.createElement("span", {
         className: addonClassName
       }, addonAfter) : null;
       var mergedWrapperClassName = classNames("".concat(prefixCls, "-wrapper"), _defineProperty({}, wrapperClassName, addonBefore || addonAfter));
       var mergedGroupClassName = classNames(className, "".concat(prefixCls, "-group-wrapper"), (_classNames3 = {}, _defineProperty(_classNames3, "".concat(prefixCls, "-group-wrapper-sm"), size === 'small'), _defineProperty(_classNames3, "".concat(prefixCls, "-group-wrapper-lg"), size === 'large'), _classNames3)); // Need another wrapper for changing display:table to display:inline-block
       // and put style prop in wrapper
 
-      return React.createElement("span", {
+      return /*#__PURE__*/React.createElement("span", {
         className: mergedGroupClassName,
         style: style
-      }, React.createElement("span", {
+      }, /*#__PURE__*/React.createElement("span", {
         className: mergedWrapperClassName
-      }, addonBeforeNode, React.cloneElement(children, {
+      }, addonBeforeNode, /*#__PURE__*/React.cloneElement(children, {
         style: null
       }), addonAfterNode));
     }
@@ -252,14 +256,14 @@ function (_React$Component) {
         return children;
       }
 
-      var prefix = props.prefix ? React.createElement("span", {
+      var prefix = props.prefix ? /*#__PURE__*/React.createElement("span", {
         className: "".concat(prefixCls, "-prefix")
       }, props.prefix) : null;
       var affixWrapperCls = classNames(props.className, "".concat(prefixCls, "-affix-wrapper"), (_classNames4 = {}, _defineProperty(_classNames4, "".concat(prefixCls, "-affix-wrapper-sm"), props.size === 'small'), _defineProperty(_classNames4, "".concat(prefixCls, "-affix-wrapper-lg"), props.size === 'large'), _defineProperty(_classNames4, "".concat(prefixCls, "-affix-wrapper-with-clear-btn"), props.suffix && props.allowClear && this.state.value), _classNames4));
-      return React.createElement("span", {
+      return /*#__PURE__*/React.createElement("span", {
         className: affixWrapperCls,
         style: props.style
-      }, prefix, React.cloneElement(children, {
+      }, prefix, /*#__PURE__*/React.cloneElement(children, {
         style: null,
         className: this.getInputClassName(prefixCls)
       }), suffix);
@@ -276,7 +280,7 @@ function (_React$Component) {
       var otherProps = omit(this.props, ['prefixCls', 'onPressEnter', 'addonBefore', 'addonAfter', 'prefix', 'suffix', 'allowClear', // Input elements must be either controlled or uncontrolled,
       // specify either the value prop, or the defaultValue prop, but not both.
       'defaultValue', 'size']);
-      return this.renderLabeledIcon(prefixCls, React.createElement("input", _extends({}, otherProps, {
+      return this.renderLabeledIcon(prefixCls, /*#__PURE__*/React.createElement("input", _extends({}, otherProps, {
         value: fixControlledValue(value),
         onChange: this.handleChange,
         className: classNames(this.getInputClassName(prefixCls), _defineProperty({}, className, className && !addonBefore && !addonAfter)),
@@ -287,7 +291,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(ConfigConsumer, null, this.renderComponent);
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderComponent);
     }
   }], [{
     key: "getDerivedStateFromProps",

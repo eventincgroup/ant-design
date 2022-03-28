@@ -45,7 +45,7 @@ export default function create() {
     var content = null;
 
     if (props.type) {
-      content = React.createElement("use", {
+      content = /*#__PURE__*/React.createElement("use", {
         xlinkHref: "#".concat(type)
       });
     }
@@ -54,7 +54,7 @@ export default function create() {
       content = children;
     }
 
-    return React.createElement(Icon, _extends({}, restProps, extraCommonProps), content);
+    return /*#__PURE__*/React.createElement(Icon, _extends({}, restProps, extraCommonProps), content);
   };
 
   Iconfont.displayName = 'Iconfont';

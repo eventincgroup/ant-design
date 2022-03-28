@@ -22,11 +22,11 @@ declare class DirectoryTree extends React.Component<DirectoryTreeProps, Director
     cachedSelectedKeys?: string[];
     constructor(props: DirectoryTreeProps);
     onExpand: (expandedKeys: string[], info: AntTreeNodeExpandedEvent) => void | PromiseLike<void>;
-    onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>, node: AntTreeNode) => void;
-    onDoubleClick: (event: React.MouseEvent<HTMLElement, MouseEvent>, node: AntTreeNode) => void;
+    onClick: (event: React.MouseEvent<HTMLElement>, node: AntTreeNode) => void;
+    onDoubleClick: (event: React.MouseEvent<HTMLElement>, node: AntTreeNode) => void;
     onSelect: (keys: string[], event: AntTreeNodeSelectedEvent) => void;
     setTreeRef: (node: Tree) => void;
-    expandFolderNode: (event: React.MouseEvent<HTMLElement, MouseEvent>, node: AntTreeNode) => void;
+    expandFolderNode: (event: React.MouseEvent<HTMLElement>, node: AntTreeNode) => void;
     setUncontrolledState: (state: DirectoryTreeState) => void;
     renderDirectoryTree: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element;
     render(): JSX.Element;

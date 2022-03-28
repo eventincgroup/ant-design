@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -6,17 +6,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -142,17 +146,17 @@ function isFiltersChanged(state, filters) {
   });
 }
 
-var Table =
-/*#__PURE__*/
-function (_React$Component) {
+var Table = /*#__PURE__*/function (_React$Component) {
   _inherits(Table, _React$Component);
+
+  var _super = _createSuper(Table);
 
   function Table(props) {
     var _this;
 
     _classCallCheck(this, Table);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Table).call(this, props));
+    _this = _super.call(this, props);
 
     _this.getCheckboxPropsByItem = function (item, index) {
       var rowSelection = getRowSelection(_this.props);
@@ -560,13 +564,13 @@ function (_React$Component) {
             onExpand = _ref.onExpand;
 
         if (expandable) {
-          return React.createElement(LocaleReceiver, {
+          return /*#__PURE__*/React.createElement(LocaleReceiver, {
             componentName: "Table",
             defaultLocale: defaultLocale.Table
           }, function (locale) {
             var _classNames;
 
-            return React.createElement(TransButton, {
+            return /*#__PURE__*/React.createElement(TransButton, {
               className: classNames("".concat(prefixCls, "-row-expand-icon"), (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-row-collapsed"), !expanded), _defineProperty(_classNames, "".concat(prefixCls, "-row-expanded"), expanded), _classNames)),
               onClick: function onClick(event) {
                 onExpand(record, event);
@@ -578,7 +582,7 @@ function (_React$Component) {
         }
 
         if (needIndentSpaced) {
-          return React.createElement("span", {
+          return /*#__PURE__*/React.createElement("span", {
             className: "".concat(prefixCls, "-row-expand-icon ").concat(prefixCls, "-row-spaced")
           });
         }
@@ -597,9 +601,9 @@ function (_React$Component) {
           return type === 'radio' ? _this.handleRadioSelect(record, index, e) : _this.handleSelect(record, index, e);
         };
 
-        return React.createElement("span", {
+        return /*#__PURE__*/React.createElement("span", {
           onClick: stopPropagation
-        }, React.createElement(SelectionBox, _extends({
+        }, /*#__PURE__*/React.createElement(SelectionBox, _extends({
           type: type,
           store: _this.props.store,
           rowIndex: rowKey,
@@ -666,7 +670,7 @@ function (_React$Component) {
         expandIconColumnIndex = restProps.expandIconColumnIndex;
       }
 
-      return React.createElement(RcTable, _extends({
+      return /*#__PURE__*/React.createElement(RcTable, _extends({
         ref: _this.rcTable,
         key: "table",
         expandIcon: _this.renderExpandIcon(prefixCls)
@@ -708,7 +712,7 @@ function (_React$Component) {
 
       var prefixCls = getPrefixCls('table', customizePrefixCls);
       var dropdownPrefixCls = getPrefixCls('dropdown', customizeDropdownPrefixCls);
-      var table = React.createElement(LocaleReceiver, {
+      var table = /*#__PURE__*/React.createElement(LocaleReceiver, {
         componentName: "Table",
         defaultLocale: defaultLocale.Table
       }, function (locale) {
@@ -723,15 +727,15 @@ function (_React$Component) {
       // the height of spin should decrease by half of pagination
 
       var paginationPatchClass = _this.hasPagination() && data && data.length !== 0 ? "".concat(prefixCls, "-with-pagination") : "".concat(prefixCls, "-without-pagination");
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         className: classNames("".concat(prefixCls, "-wrapper"), className),
         style: style
-      }, React.createElement(Spin, _extends({}, loading, {
+      }, /*#__PURE__*/React.createElement(Spin, _extends({}, loading, {
         className: loading.spinning ? "".concat(paginationPatchClass, " ").concat(prefixCls, "-spin-holder") : ''
       }), _this.renderPagination(prefixCls, 'top'), table, _this.renderPagination(prefixCls, 'bottom')));
     };
 
-    _this.rcTable = React.createRef();
+    _this.rcTable = /*#__PURE__*/React.createRef();
     var expandedRowRender = props.expandedRowRender,
         _props$columns = props.columns,
         columnsProp = _props$columns === void 0 ? [] : _props$columns;
@@ -1155,7 +1159,7 @@ function (_React$Component) {
 
       var position = pagination.position || 'bottom';
       var total = pagination.total || this.getLocalData().length;
-      return total > 0 && (position === paginationPosition || position === 'both') ? React.createElement(Pagination, _extends({
+      return total > 0 && (position === paginationPosition || position === 'both') ? /*#__PURE__*/React.createElement(Pagination, _extends({
         key: "pagination-".concat(paginationPosition)
       }, pagination, {
         className: classNames(pagination.className, "".concat(prefixCls, "-pagination")),
@@ -1202,7 +1206,7 @@ function (_React$Component) {
           var checkboxAllDisabled = data.every(function (item, index) {
             return _this7.getCheckboxPropsByItem(item, index).disabled;
           });
-          selectionColumn.title = selectionColumn.title || React.createElement(SelectionCheckboxAll, {
+          selectionColumn.title = selectionColumn.title || /*#__PURE__*/React.createElement(SelectionCheckboxAll, {
             store: this.props.store,
             locale: locale,
             data: data,
@@ -1259,7 +1263,7 @@ function (_React$Component) {
 
         if (column.filters && column.filters.length > 0 || column.filterDropdown) {
           var colFilters = key in filters ? filters[key] : [];
-          filterDropdown = React.createElement(FilterDropdown, {
+          filterDropdown = /*#__PURE__*/React.createElement(FilterDropdown, {
             locale: locale,
             column: column,
             selectedKeys: colFilters,
@@ -1275,17 +1279,17 @@ function (_React$Component) {
           var sortDirections = column.sortDirections || _this8.props.sortDirections;
           var isAscend = isSortColumn && sortOrder === 'ascend';
           var isDescend = isSortColumn && sortOrder === 'descend';
-          var ascend = sortDirections.indexOf('ascend') !== -1 && React.createElement(Icon, {
+          var ascend = sortDirections.indexOf('ascend') !== -1 && /*#__PURE__*/React.createElement(Icon, {
             className: "".concat(prefixCls, "-column-sorter-up ").concat(isAscend ? 'on' : 'off'),
             type: "caret-up",
             theme: "filled"
           });
-          var descend = sortDirections.indexOf('descend') !== -1 && React.createElement(Icon, {
+          var descend = sortDirections.indexOf('descend') !== -1 && /*#__PURE__*/React.createElement(Icon, {
             className: "".concat(prefixCls, "-column-sorter-down ").concat(isDescend ? 'on' : 'off'),
             type: "caret-down",
             theme: "filled"
           });
-          sortButton = React.createElement("div", {
+          sortButton = /*#__PURE__*/React.createElement("div", {
             title: locale.sortTitle,
             className: classNames("".concat(prefixCls, "-column-sorter-inner"), ascend && descend && "".concat(prefixCls, "-column-sorter-inner-full")),
             key: "sorter"
@@ -1315,14 +1319,14 @@ function (_React$Component) {
 
         return _extends(_extends({}, column), {
           className: classNames(column.className, (_classNames4 = {}, _defineProperty(_classNames4, "".concat(prefixCls, "-column-has-actions"), sortButton || filterDropdown), _defineProperty(_classNames4, "".concat(prefixCls, "-column-has-filters"), filterDropdown), _defineProperty(_classNames4, "".concat(prefixCls, "-column-has-sorters"), sortButton), _defineProperty(_classNames4, "".concat(prefixCls, "-column-sort"), isSortColumn && sortOrder), _classNames4)),
-          title: [React.createElement("span", {
+          title: [/*#__PURE__*/React.createElement("span", {
             key: "title",
             className: "".concat(prefixCls, "-header-column")
-          }, React.createElement("div", {
+          }, /*#__PURE__*/React.createElement("div", {
             className: sortButton ? "".concat(prefixCls, "-column-sorters") : undefined
-          }, React.createElement("span", {
+          }, /*#__PURE__*/React.createElement("span", {
             className: "".concat(prefixCls, "-column-title")
-          }, _this8.renderColumnTitle(column.title)), React.createElement("span", {
+          }, _this8.renderColumnTitle(column.title)), /*#__PURE__*/React.createElement("span", {
             className: "".concat(prefixCls, "-column-sorter")
           }, sortButton))), filterDropdown],
           onHeaderCell: onHeaderCell
@@ -1350,7 +1354,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(ConfigConsumer, null, this.renderComponent);
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderComponent);
     }
   }], [{
     key: "getDerivedStateFromProps",
@@ -1456,17 +1460,17 @@ Table.defaultProps = {
 };
 
 function withStore(WrappedComponent) {
-  var Component =
-  /*#__PURE__*/
-  function (_React$Component2) {
+  var Component = /*#__PURE__*/function (_React$Component2) {
     _inherits(Component, _React$Component2);
+
+    var _super2 = _createSuper(Component);
 
     function Component(props) {
       var _this9;
 
       _classCallCheck(this, Component);
 
-      _this9 = _possibleConstructorReturn(this, _getPrototypeOf(Component).call(this, props));
+      _this9 = _super2.call(this, props);
 
       _this9.setCheckboxPropsCache = function (cache) {
         return _this9.CheckboxPropsCache = cache;
@@ -1483,7 +1487,7 @@ function withStore(WrappedComponent) {
     _createClass(Component, [{
       key: "render",
       value: function render() {
-        return React.createElement(WrappedComponent, _extends({}, this.props, {
+        return /*#__PURE__*/React.createElement(WrappedComponent, _extends({}, this.props, {
           store: this.store,
           checkboxPropsCache: this.CheckboxPropsCache,
           setCheckboxPropsCache: this.setCheckboxPropsCache

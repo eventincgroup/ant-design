@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var __rest = this && this.__rest || function (s, e) {
   var t = {};
@@ -45,29 +49,31 @@ import warning from '../_util/warning';
 
 function getAction(actions) {
   var actionList = actions.map(function (action, index) {
-    return (// eslint-disable-next-line react/no-array-index-key
+    return (
+      /*#__PURE__*/
+      // eslint-disable-next-line react/no-array-index-key
       React.createElement("li", {
         style: {
           width: "".concat(100 / actions.length, "%")
         },
         key: "action-".concat(index)
-      }, React.createElement("span", null, action))
+      }, /*#__PURE__*/React.createElement("span", null, action))
     );
   });
   return actionList;
 }
 
-var Card =
-/*#__PURE__*/
-function (_React$Component) {
+var Card = /*#__PURE__*/function (_React$Component) {
   _inherits(Card, _React$Component);
+
+  var _super = _createSuper(Card);
 
   function Card() {
     var _this;
 
     _classCallCheck(this, Card);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Card).apply(this, arguments));
+    _this = _super.apply(this, arguments);
 
     _this.renderCard = function (_ref) {
       var _classNames;
@@ -99,87 +105,87 @@ function (_React$Component) {
       var loadingBlockStyle = bodyStyle.padding === 0 || bodyStyle.padding === '0px' ? {
         padding: 24
       } : undefined;
-      var loadingBlock = React.createElement("div", {
+      var loadingBlock = /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-content"),
         style: loadingBlockStyle
-      }, React.createElement(Row, {
+      }, /*#__PURE__*/React.createElement(Row, {
         gutter: 8
-      }, React.createElement(Col, {
+      }, /*#__PURE__*/React.createElement(Col, {
         span: 22
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      }))), React.createElement(Row, {
+      }))), /*#__PURE__*/React.createElement(Row, {
         gutter: 8
-      }, React.createElement(Col, {
+      }, /*#__PURE__*/React.createElement(Col, {
         span: 8
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      })), React.createElement(Col, {
+      })), /*#__PURE__*/React.createElement(Col, {
         span: 15
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      }))), React.createElement(Row, {
+      }))), /*#__PURE__*/React.createElement(Row, {
         gutter: 8
-      }, React.createElement(Col, {
+      }, /*#__PURE__*/React.createElement(Col, {
         span: 6
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      })), React.createElement(Col, {
+      })), /*#__PURE__*/React.createElement(Col, {
         span: 18
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      }))), React.createElement(Row, {
+      }))), /*#__PURE__*/React.createElement(Row, {
         gutter: 8
-      }, React.createElement(Col, {
+      }, /*#__PURE__*/React.createElement(Col, {
         span: 13
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      })), React.createElement(Col, {
+      })), /*#__PURE__*/React.createElement(Col, {
         span: 9
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      }))), React.createElement(Row, {
+      }))), /*#__PURE__*/React.createElement(Row, {
         gutter: 8
-      }, React.createElement(Col, {
+      }, /*#__PURE__*/React.createElement(Col, {
         span: 4
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      })), React.createElement(Col, {
+      })), /*#__PURE__*/React.createElement(Col, {
         span: 3
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
-      })), React.createElement(Col, {
+      })), /*#__PURE__*/React.createElement(Col, {
         span: 16
-      }, React.createElement("div", {
+      }, /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-loading-block")
       }))));
       var head;
 
       if (title || extra) {
-        head = React.createElement("div", {
+        head = /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-head"),
           style: headStyle
-        }, React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-head-wrapper")
-        }, title && React.createElement("div", {
+        }, title && /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-head-title")
-        }, title), extra && React.createElement("div", {
+        }, title), extra && /*#__PURE__*/React.createElement("div", {
           className: "".concat(prefixCls, "-extra")
         }, extra)));
       }
 
-      var coverDom = cover ? React.createElement("div", {
+      var coverDom = cover ? /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-cover")
       }, cover) : null;
-      var body = React.createElement("div", {
+      var body = /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-body"),
         style: bodyStyle
       }, loading ? loadingBlock : children);
-      var actionDom = actions && actions.length ? React.createElement("ul", {
+      var actionDom = actions && actions.length ? /*#__PURE__*/React.createElement("ul", {
         className: "".concat(prefixCls, "-actions")
       }, getAction(actions)) : null;
       var divProps = omit(others, ['noHovering', 'hoverable']);
-      return React.createElement("div", _extends({}, divProps, {
+      return /*#__PURE__*/React.createElement("div", _extends({}, divProps, {
         className: classString
       }), head, coverDom, body, actionDom);
     };
@@ -223,7 +229,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(ConfigConsumer, null, this.renderCard);
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderCard);
     }
   }]);
 

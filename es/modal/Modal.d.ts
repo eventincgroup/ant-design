@@ -115,7 +115,7 @@ export default class Modal extends React.Component<ModalProps, {}> {
         okText: PropTypes.Requireable<PropTypes.ReactNodeLike>;
         cancelText: PropTypes.Requireable<PropTypes.ReactNodeLike>;
         centered: PropTypes.Requireable<boolean>;
-        width: PropTypes.Requireable<string | number>;
+        width: PropTypes.Requireable<React.ReactText>;
         confirmLoading: PropTypes.Requireable<boolean>;
         visible: PropTypes.Requireable<boolean>;
         footer: PropTypes.Requireable<PropTypes.ReactNodeLike>;
@@ -123,8 +123,8 @@ export default class Modal extends React.Component<ModalProps, {}> {
         closable: PropTypes.Requireable<boolean>;
         closeIcon: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
-    handleCancel: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    handleOk: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    handleCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    handleOk: (e: React.MouseEvent<HTMLButtonElement>) => void;
     renderFooter: (locale: ModalLocale) => JSX.Element;
     renderModal: ({ getPopupContainer: getContextPopupContainer, getPrefixCls, }: ConfigConsumerProps) => JSX.Element;
     render(): JSX.Element;

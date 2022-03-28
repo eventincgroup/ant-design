@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import RcSwitch from 'rc-switch';
 import { ConfigConsumerProps } from '../config-provider';
 export declare type SwitchSize = 'small' | 'default';
 export declare type SwitchChangeEventHandler = (checked: boolean, event: MouseEvent) => void;
@@ -29,7 +30,7 @@ export default class Switch extends React.Component<SwitchProps, {}> {
     };
     private rcSwitch;
     constructor(props: SwitchProps);
-    saveSwitch: (node: any) => void;
+    saveSwitch: (node: typeof RcSwitch) => void;
     focus(): void;
     blur(): void;
     renderSwitch: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element;

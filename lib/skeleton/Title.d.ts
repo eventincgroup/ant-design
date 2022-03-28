@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface SkeletonTitleProps {
     prefixCls?: string;
     className?: string;

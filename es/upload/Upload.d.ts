@@ -1,4 +1,5 @@
 import * as React from 'react';
+import RcUpload from 'rc-upload';
 import Dragger from './Dragger';
 import { RcFile, UploadProps, UploadState, UploadFile, UploadLocale, UploadChangeParam, UploadType, UploadListType } from './interface';
 import { T } from './utils';
@@ -27,7 +28,7 @@ declare class Upload extends React.Component<UploadProps, UploadState> {
     upload: any;
     constructor(props: UploadProps);
     componentWillUnmount(): void;
-    saveUpload: (node: any) => void;
+    saveUpload: (node: typeof RcUpload) => void;
     onStart: (file: RcFile) => void;
     onSuccess: (response: any, file: UploadFile) => void;
     onProgress: (e: {
@@ -35,7 +36,7 @@ declare class Upload extends React.Component<UploadProps, UploadState> {
     }, file: UploadFile) => void;
     onError: (error: Error, response: any, file: UploadFile) => void;
     handleRemove: (file: UploadFile) => void;
-    onChange: (info: UploadChangeParam<UploadFile>) => void;
+    onChange: (info: UploadChangeParam) => void;
     onFileDrop: (e: React.DragEvent<HTMLDivElement>) => void;
     beforeUpload: (file: RcFile, fileList: RcFile[]) => boolean | PromiseLike<void>;
     clearProgressTimer(): void;

@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -8,17 +8,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var __rest = this && this.__rest || function (s, e) {
   var t = {};
@@ -55,17 +59,17 @@ var SelectPropTypes = {
   id: PropTypes.string
 };
 
-var Select =
-/*#__PURE__*/
-function (_React$Component) {
+var Select = /*#__PURE__*/function (_React$Component) {
   _inherits(Select, _React$Component);
+
+  var _super = _createSuper(Select);
 
   function Select(props) {
     var _this;
 
     _classCallCheck(this, Select);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Select).call(this, props));
+    _this = _super.call(this, props);
 
     _this.saveSelect = function (node) {
       _this.rcSelect = node;
@@ -106,26 +110,26 @@ function (_React$Component) {
         tags: mode === 'tags',
         combobox: _this.isCombobox()
       };
-      var finalRemoveIcon = removeIcon && (React.isValidElement(removeIcon) ? React.cloneElement(removeIcon, {
+      var finalRemoveIcon = removeIcon && ( /*#__PURE__*/React.isValidElement(removeIcon) ? /*#__PURE__*/React.cloneElement(removeIcon, {
         className: classNames(removeIcon.props.className, "".concat(prefixCls, "-remove-icon"))
-      }) : removeIcon) || React.createElement(Icon, {
+      }) : removeIcon) || /*#__PURE__*/React.createElement(Icon, {
         type: "close",
         className: "".concat(prefixCls, "-remove-icon")
       });
-      var finalClearIcon = clearIcon && (React.isValidElement(clearIcon) ? React.cloneElement(clearIcon, {
+      var finalClearIcon = clearIcon && ( /*#__PURE__*/React.isValidElement(clearIcon) ? /*#__PURE__*/React.cloneElement(clearIcon, {
         className: classNames(clearIcon.props.className, "".concat(prefixCls, "-clear-icon"))
-      }) : clearIcon) || React.createElement(Icon, {
+      }) : clearIcon) || /*#__PURE__*/React.createElement(Icon, {
         type: "close-circle",
         theme: "filled",
         className: "".concat(prefixCls, "-clear-icon")
       });
-      var finalMenuItemSelectedIcon = menuItemSelectedIcon && (React.isValidElement(menuItemSelectedIcon) ? React.cloneElement(menuItemSelectedIcon, {
+      var finalMenuItemSelectedIcon = menuItemSelectedIcon && ( /*#__PURE__*/React.isValidElement(menuItemSelectedIcon) ? /*#__PURE__*/React.cloneElement(menuItemSelectedIcon, {
         className: classNames(menuItemSelectedIcon.props.className, "".concat(prefixCls, "-selected-icon"))
-      }) : menuItemSelectedIcon) || React.createElement(Icon, {
+      }) : menuItemSelectedIcon) || /*#__PURE__*/React.createElement(Icon, {
         type: "check",
         className: "".concat(prefixCls, "-selected-icon")
       });
-      return React.createElement(RcSelect, _extends({
+      return /*#__PURE__*/React.createElement(RcSelect, _extends({
         inputIcon: _this.renderSuffixIcon(prefixCls),
         removeIcon: finalRemoveIcon,
         clearIcon: finalClearIcon,
@@ -184,18 +188,18 @@ function (_React$Component) {
           suffixIcon = _this$props.suffixIcon;
 
       if (suffixIcon) {
-        return React.isValidElement(suffixIcon) ? React.cloneElement(suffixIcon, {
+        return /*#__PURE__*/React.isValidElement(suffixIcon) ? /*#__PURE__*/React.cloneElement(suffixIcon, {
           className: classNames(suffixIcon.props.className, "".concat(prefixCls, "-arrow-icon"))
         }) : suffixIcon;
       }
 
       if (loading) {
-        return React.createElement(Icon, {
+        return /*#__PURE__*/React.createElement(Icon, {
           type: "loading"
         });
       }
 
-      return React.createElement(Icon, {
+      return /*#__PURE__*/React.createElement(Icon, {
         type: "down",
         className: "".concat(prefixCls, "-arrow-icon")
       });
@@ -203,7 +207,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(ConfigConsumer, null, this.renderSelect);
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderSelect);
     }
   }]);
 

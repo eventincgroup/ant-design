@@ -22,7 +22,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
 export default class MenuItem extends React.Component<MenuItemProps> {
     static isMenuItem: boolean;
     private menuItem;
-    onKeyDown: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    onKeyDown: (e: React.MouseEvent<HTMLElement>) => void;
     saveMenuItem: (menuItem: this) => void;
     renderItem: ({ siderCollapsed }: SiderContextProps) => JSX.Element;
     render(): JSX.Element;

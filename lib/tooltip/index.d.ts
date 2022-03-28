@@ -1,4 +1,5 @@
 import * as React from 'react';
+import RcTooltip from 'rc-tooltip';
 import { AdjustOverflow, PlacementsConfig } from './placements';
 import { ConfigConsumerProps } from '../config-provider';
 export { AdjustOverflow, PlacementsConfig };
@@ -68,7 +69,7 @@ declare class Tooltip extends React.Component<TooltipProps, any> {
     onVisibleChange: (visible: boolean) => void;
     getPopupDomNode(): any;
     getPlacements(): any;
-    saveTooltip: (node: any) => void;
+    saveTooltip: (node: typeof RcTooltip) => void;
     onPopupAlign: (domNode: HTMLElement, align: any) => void;
     isNoTitle(): boolean;
     renderTooltip: ({ getPopupContainer: getContextPopupContainer, getPrefixCls, }: ConfigConsumerProps) => JSX.Element;

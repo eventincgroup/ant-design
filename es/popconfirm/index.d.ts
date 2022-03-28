@@ -25,7 +25,7 @@ export interface PopconfirmLocale {
 declare class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     static defaultProps: {
         transitionName: string;
-        placement: "left" | "right" | "top" | "bottom" | "bottomRight" | "topLeft" | "topRight" | "bottomLeft" | "leftTop" | "leftBottom" | "rightTop" | "rightBottom" | undefined;
+        placement: "left" | "right" | "bottom" | "top" | "bottomRight" | "topLeft" | "topRight" | "bottomLeft" | "leftTop" | "leftBottom" | "rightTop" | "rightBottom" | undefined;
         trigger: "click" | "focus" | "contextMenu" | "hover" | undefined;
         okType: "link" | "default" | "dashed" | "primary" | "ghost" | "danger" | undefined;
         icon: JSX.Element;
@@ -37,8 +37,8 @@ declare class Popconfirm extends React.Component<PopconfirmProps, PopconfirmStat
     private tooltip;
     constructor(props: PopconfirmProps);
     getPopupDomNode(): any;
-    onConfirm: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    onCancel: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    onConfirm: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
     onVisibleChange: (visible: boolean) => void;
     setVisible(visible: boolean, e?: React.MouseEvent<HTMLButtonElement>): void;
     saveTooltip: (node: any) => void;

@@ -48,7 +48,7 @@ export default class FormItem extends React.Component<FormItemProps, any> {
     getId(): any;
     getMeta(): any;
     getField(): any;
-    getValidateStatus(): "error" | "" | "success" | "validating";
+    getValidateStatus(): "" | "error" | "success" | "validating";
     onLabelClick: () => void;
     onHelpAnimEnd: (_key: string, helpShow: boolean) => void;
     isRequired(): any;

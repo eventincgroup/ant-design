@@ -37,6 +37,6 @@ export default class Pagination extends React.Component<PaginationProps, {}> {
         jumpPrevIcon: JSX.Element;
         jumpNextIcon: JSX.Element;
     };
-    renderPagination: (contextLocale: any) => JSX.Element;
+    renderPagination: (contextLocale: PaginationLocale) => JSX.Element;
     render(): JSX.Element;
 }

@@ -36,7 +36,7 @@ declare class RangePicker extends React.Component<any, RangePickerState> {
     componentDidUpdate(_: any, prevState: RangePickerState): void;
     setValue(value: RangePickerValue, hidePanel?: boolean): void;
     savePicker: (node: HTMLSpanElement) => void;
-    clearSelection: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    clearSelection: (e: React.MouseEvent<HTMLElement>) => void;
     clearHoverValue: () => void;
     handleChange: (value: RangePickerValue) => void;
     handleOpenChange: (open: boolean) => void;

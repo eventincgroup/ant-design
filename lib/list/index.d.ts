@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { SpinProps } from '../spin';
-import { ConfigConsumerProps } from '../config-provider';
+import { ConfigConsumerProps, RenderEmptyHandler } from '../config-provider';
 import { PaginationConfig } from '../pagination';
 import Item from './Item';
 export { ListItemProps, ListItemMetaProps } from './Item';
@@ -76,7 +76,7 @@ export default class List<T> extends React.Component<ListProps<T>, ListState> {
     triggerPaginationEvent(eventName: string): (page: number, pageSize: number) => void;
     renderItem: (item: any, index: number) => {} | null | undefined;
     isSomethingAfterLastItem(): boolean;
-    renderEmpty: (prefixCls: string, renderEmpty: (componentName?: string | undefined) => React.ReactNode) => JSX.Element;
+    renderEmpty: (prefixCls: string, renderEmpty: RenderEmptyHandler) => JSX.Element;
     renderList: ({ getPrefixCls, renderEmpty }: ConfigConsumerProps) => JSX.Element;
     render(): JSX.Element;
 }

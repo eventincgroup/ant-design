@@ -33,7 +33,7 @@ export default class Header extends React.Component<HeaderProps, any> {
     onMonthChange: (month: string) => void;
     onInternalTypeChange: (e: RadioChangeEvent) => void;
     onTypeChange: (type: string) => void;
-    getMonthYearSelections: (getPrefixCls: (suffixCls: string, customizePrefixCls?: string | undefined) => string) => {
+    getMonthYearSelections: (getPrefixCls: ConfigConsumerProps['getPrefixCls']) => {
         yearReactNode: JSX.Element;
         monthReactNode: JSX.Element | null;
     };

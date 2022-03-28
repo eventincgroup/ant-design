@@ -164,6 +164,12 @@
 .ant-calendar-input::-webkit-input-placeholder {
   color: #bfbfbf;
 }
+.ant-calendar-input:-moz-placeholder-shown {
+  text-overflow: ellipsis;
+}
+.ant-calendar-input:-ms-input-placeholder {
+  text-overflow: ellipsis;
+}
 .ant-calendar-input:placeholder-shown {
   text-overflow: ellipsis;
 }
@@ -826,6 +832,12 @@
 .ant-calendar-range-picker-input::-webkit-input-placeholder {
   color: #bfbfbf;
 }
+.ant-calendar-range-picker-input:-moz-placeholder-shown {
+  text-overflow: ellipsis;
+}
+.ant-calendar-range-picker-input:-ms-input-placeholder {
+  text-overflow: ellipsis;
+}
 .ant-calendar-range-picker-input:placeholder-shown {
   text-overflow: ellipsis;
 }
@@ -951,6 +963,12 @@
 .ant-calendar-range .ant-calendar-input::-webkit-input-placeholder,
 .ant-calendar-range .ant-calendar-time-picker-input::-webkit-input-placeholder {
   color: #bfbfbf;
+}
+.ant-calendar-range .ant-calendar-input:-moz-placeholder-shown, .ant-calendar-range .ant-calendar-time-picker-input:-moz-placeholder-shown {
+  text-overflow: ellipsis;
+}
+.ant-calendar-range .ant-calendar-input:-ms-input-placeholder, .ant-calendar-range .ant-calendar-time-picker-input:-ms-input-placeholder {
+  text-overflow: ellipsis;
 }
 .ant-calendar-range .ant-calendar-input:placeholder-shown,
 .ant-calendar-range .ant-calendar-time-picker-input:placeholder-shown {

@@ -32,7 +32,7 @@ export interface AlertState {
 }
 export default class Alert extends React.Component<AlertProps, AlertState> {
     constructor(props: AlertProps);
-    handleClose: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
     animationEnd: () => void;
     renderAlert: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element | null;
     render(): JSX.Element;

@@ -28,5 +28,5 @@ interface BasicExportProps {
 interface ConsumerConfig {
     prefixCls: string;
 }
-export declare function withConfigConsumer<ExportProps extends BasicExportProps>(config: ConsumerConfig): <ComponentDef>(Component: IReactComponent<any>) => React.FunctionComponent<ExportProps> & ComponentDef;
+export declare function withConfigConsumer<ExportProps extends BasicExportProps>(config: ConsumerConfig): <ComponentDef>(Component: IReactComponent) => React.SFC<ExportProps> & ComponentDef;
 export default ConfigProvider;

@@ -1,4 +1,4 @@
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -6,17 +6,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -40,17 +44,17 @@ function stopPropagation(e) {
   }
 }
 
-var FilterMenu =
-/*#__PURE__*/
-function (_React$Component) {
+var FilterMenu = /*#__PURE__*/function (_React$Component) {
   _inherits(FilterMenu, _React$Component);
+
+  var _super = _createSuper(FilterMenu);
 
   function FilterMenu(props) {
     var _this;
 
     _classCallCheck(this, FilterMenu);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(FilterMenu).call(this, props));
+    _this = _super.call(this, props);
 
     _this.setNeverShown = function (column) {
       var rootNode = ReactDOM.findDOMNode(_assertThisInitialized(_this));
@@ -135,11 +139,11 @@ function (_React$Component) {
       }
 
       var dropdownIconClass = classNames((_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-selected"), filtered), _defineProperty(_classNames, "".concat(prefixCls, "-open"), _this.getDropdownVisible()), _classNames));
-      return filterIcon ? React.cloneElement(filterIcon, {
+      return filterIcon ? /*#__PURE__*/React.cloneElement(filterIcon, {
         title: locale.filterTitle,
         className: classNames("".concat(prefixCls, "-icon"), dropdownIconClass, filterIcon.props.className),
         onClick: stopPropagation
-      }) : React.createElement(Icon, {
+      }) : /*#__PURE__*/React.createElement(Icon, {
         title: locale.filterTitle,
         type: "filter",
         theme: "filled",
@@ -235,7 +239,7 @@ function (_React$Component) {
             return keyPathOfSelectedItem[key].indexOf(item.value) >= 0;
           });
           var subMenuCls = classNames("".concat(prefixCls, "-dropdown-submenu"), _defineProperty({}, "".concat(dropdownPrefixCls, "-submenu-contain-selected"), containSelected));
-          return React.createElement(SubMenu, {
+          return /*#__PURE__*/React.createElement(SubMenu, {
             title: item.text,
             popupClassName: subMenuCls,
             key: item.value.toString()
@@ -255,14 +259,14 @@ function (_React$Component) {
       var internalSelectedKeys = (selectedKeys || []).map(function (key) {
         return key.toString();
       });
-      var input = multiple ? React.createElement(Checkbox, {
+      var input = multiple ? /*#__PURE__*/React.createElement(Checkbox, {
         checked: internalSelectedKeys.indexOf(item.value.toString()) >= 0
-      }) : React.createElement(Radio, {
+      }) : /*#__PURE__*/React.createElement(Radio, {
         checked: internalSelectedKeys.indexOf(item.value.toString()) >= 0
       });
-      return React.createElement(MenuItem, {
+      return /*#__PURE__*/React.createElement(MenuItem, {
         key: item.value
-      }, input, React.createElement("span", null, item.text));
+      }, input, /*#__PURE__*/React.createElement("span", null, item.text));
     }
   }, {
     key: "render",
@@ -297,11 +301,11 @@ function (_React$Component) {
         });
       }
 
-      var menus = filterDropdown ? React.createElement(FilterDropdownMenuWrapper, {
+      var menus = filterDropdown ? /*#__PURE__*/React.createElement(FilterDropdownMenuWrapper, {
         className: "".concat(prefixCls, "-dropdown")
-      }, filterDropdown) : React.createElement(FilterDropdownMenuWrapper, {
+      }, filterDropdown) : /*#__PURE__*/React.createElement(FilterDropdownMenuWrapper, {
         className: "".concat(prefixCls, "-dropdown")
-      }, React.createElement(Menu, {
+      }, /*#__PURE__*/React.createElement(Menu, {
         multiple: multiple,
         onClick: this.handleMenuItemClick,
         prefixCls: "".concat(dropdownPrefixCls, "-menu"),
@@ -312,16 +316,16 @@ function (_React$Component) {
           return val.toString();
         }),
         getPopupContainer: getPopupContainer
-      }, this.renderMenus(column.filters)), React.createElement("div", {
+      }, this.renderMenus(column.filters)), /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-dropdown-btns")
-      }, React.createElement("a", {
+      }, /*#__PURE__*/React.createElement("a", {
         className: "".concat(prefixCls, "-dropdown-link confirm"),
         onClick: this.handleConfirm
-      }, locale.filterConfirm), React.createElement("a", {
+      }, locale.filterConfirm), /*#__PURE__*/React.createElement("a", {
         className: "".concat(prefixCls, "-dropdown-link clear"),
         onClick: this.handleClearFilters
       }, locale.filterReset)));
-      return React.createElement(Dropdown, {
+      return /*#__PURE__*/React.createElement(Dropdown, {
         trigger: ['click'],
         placement: "bottomRight",
         overlay: menus,

@@ -60,7 +60,7 @@ declare class Calendar extends React.Component<CalendarProps, CalendarState> {
     onHeaderTypeChange: (mode: CalendarMode) => void;
     onPanelChange(value: moment.Moment, mode: CalendarMode | undefined): void;
     onSelect: (value: moment.Moment) => void;
-    setValue: (value: moment.Moment, way: "select" | "changePanel") => void;
+    setValue: (value: moment.Moment, way: 'select' | 'changePanel') => void;
     getDateRange: (validRange: [moment.Moment, moment.Moment], disabledDate?: ((current: moment.Moment) => boolean) | undefined) => (current: moment.Moment) => boolean;
     getDefaultLocale: () => any;
     monthCellRender: (value: moment.Moment) => JSX.Element;

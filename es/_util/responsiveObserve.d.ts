@@ -4,7 +4,7 @@ export declare const responsiveArray: Breakpoint[];
 export declare const responsiveMap: BreakpointMap;
 declare type SubscribeFunc = (screens: BreakpointMap) => void;
 declare const responsiveObserve: {
-    dispatch(pointMap: Partial<Record<"lg" | "sm" | "xs" | "md" | "xl" | "xxl", string>>): boolean;
+    dispatch(pointMap: BreakpointMap): boolean;
     subscribe(func: SubscribeFunc): string;
     unsubscribe(token: string): void;
     unregister(): void;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
+import RcTimePicker from 'rc-time-picker/lib/TimePicker';
 export declare function generateShowHourMinuteSecond(format: string): {
     showHour: boolean;
     showMinute: boolean;
@@ -72,7 +73,7 @@ declare class TimePicker extends React.Component<TimePickerProps, any> {
     handleOpenClose: ({ open }: {
         open: boolean;
     }) => void;
-    saveTimePicker: (timePickerRef: any) => void;
+    saveTimePicker: (timePickerRef: typeof RcTimePicker) => void;
     handleChange: (value: moment.Moment) => void;
     focus(): void;
     blur(): void;

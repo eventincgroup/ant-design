@@ -15,7 +15,7 @@ export default class UploadList extends React.Component<UploadListProps, any> {
         previewFile: typeof previewImage;
     };
     componentDidUpdate(): void;
-    handlePreview: (file: UploadFile, e: React.SyntheticEvent<HTMLElement, Event>) => void;
+    handlePreview: (file: UploadFile, e: React.SyntheticEvent<HTMLElement>) => void;
     handleDownload: (file: UploadFile) => void;
     handleClose: (file: UploadFile) => void;
     renderUploadList: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element;

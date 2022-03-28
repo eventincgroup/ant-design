@@ -44,9 +44,9 @@ export default class Tabs extends React.Component<TabsProps, any> {
         tabPosition: import("../carousel").DotPosition;
     };
     componentDidMount(): void;
-    removeTab: (targetKey: string, e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    removeTab: (targetKey: string, e: React.MouseEvent<HTMLElement>) => void;
     handleChange: (activeKey: string) => void;
-    createNewTab: (targetKey: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    createNewTab: (targetKey: React.MouseEvent<HTMLElement>) => void;
     renderTabs: ({ getPrefixCls }: ConfigConsumerProps) => JSX.Element;
     render(): JSX.Element;
 }
